@@ -6,3 +6,9 @@
     name: node_exporter
     state: restarted
     enabled: yes
+
+- name: reload_firewalld
+  systemd:
+    name: firewalld
+    state: reloaded
+    enabled: yes

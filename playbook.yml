@@ -1,7 +1,13 @@
 ---
 
-- name: install node exporter
-  hosts: all
+- name: install node exporter sur centos
+  hosts: centos
   become: yes
   roles:
-    - node-exporter
+    - node-exporter-centos
+
+- name: install node exporter sur debian
+  hosts: ubuntu-debian
+  become: yes
+  roles:
+    - node-exporter-debian

@@ -65,5 +65,15 @@
     state: started
     enabled: yes
 
+- name: Disable SELinux
+  selinux:
+    state: disabled
+  when: ansible_distribution == 'CentOS' or ansible_distribution == 'Red Hat Enterprise Linux'
 
-
+- name: "active port 9100" 
+  firewalld: 
+    port: 9100/tcp 
+    permanent: yes 
+    state: enabled 
+  notify: reload firewalld
+  when: ansible_distribution == 'CentOS' or ansible_distribution == 'Red Hat Enterprise Linux'
